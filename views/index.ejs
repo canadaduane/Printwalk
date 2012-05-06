@@ -1,0 +1,158 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Printwalk</title>
+    <meta name="description" content="a GUI for your desktop 3D printer" />
+    <meta name="author" content="Duane Johnson <duane.johnson@gmail.com>" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <link rel="stylesheet" href="<%= url('/css/boilerplate.css') %>" />
+    <link rel="stylesheet" href="<%= url('/css/kendo.common.min.css') %>" />
+    <link rel="stylesheet" href="<%= url('/css/kendo.kendo.min.css') %>" />
+    <link rel="stylesheet" href="<%= url('/css/printwalk.css') %>" />
+
+    <script type="text/javascript" src="<%= url('/js/lib/jquery-1.6.4.min.js') %>"></script>
+    <script type="text/javascript" src="<%= url('/js/lib/kendo.all.min.js') %>"></script>
+    <script type="text/javascript" src="<%= url('/js/lib/underscore-1.2.2.js') %>"></script>
+    <script type="text/javascript" src="<%= url('/js/lib/backbone-0.5.3.js') %>"></script>
+    <script type="text/javascript" src="<%= url('/js/lib/smoothie.js') %>"></script>
+    <script>
+        _.templateSettings = { interpolate : /\{\{(.+?)\}\}/g };
+        window.url = function(href) {return "<%= url() %>" + href;};
+    </script>
+
+    <script id="online-control-template" type="text/template">
+        <div class="online-control-view rounded">
+            <table width="100%">
+            <tr>
+                <td colspan="2"><div class="main-message">&nbsp;</div></td>
+            </tr>
+            <tr>
+                <td valign="top" width="100">
+                    <div class="connect"><div class="button"></div></div>
+                </td>
+                <td valign="top" width="100%">
+                    <div class="plugged rounded">
+                        <div class="indicator-wrapper"><div class="indicator red"></div></div>
+                        <div class="message">Not plugged in</div>
+                        <div class="more k-icon k-arrow-down"></div>
+                        <div class="clear"></div>
+                        <div class="drawer">
+                            <div class="combobox" style="width:200px"></div>
+                        </div>
+                    </div>
+                    <div class="online rounded">
+                        <div class="indicator-wrapper"><div class="indicator red"></div></div>
+                        <div class="message">Offline</div>
+                        <div class="more k-icon k-arrow-down"></div>
+                        <div class="clear"></div>
+                        <div class="drawer"></div>
+                    </div>
+                </td>
+            </tr>
+            </table>
+        </div>
+    </script>
+
+    <script id="temperature-graph-template" type="text/template">
+        <table class="temperature-graph-view">
+        <tr>
+            <th colspan="2" align="left">{{ title }}</th>
+        </tr>
+        <tr>
+            <td valign="top" style="padding-top: 4px">
+                <div align="middle" style="margin: 8px 0 5px 0">
+                    <span style="font-size: 18px;line-height:18px;font-weight: bold">
+                        <span class="actual" style="padding-left:12px">0</span>&deg;C
+                    </head>
+                </div>
+                <canvas class="graph" width="120" height="128"></canvas>
+            </td>
+            <td align="left" valign="top" width="55" rowspan="2">
+                <div class="slider" style="height:180px; border:0; margin-top: 8px"></div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div class="combobox" style="width:120px"></div>
+            </td>
+        </tr>
+        </table>
+    </script>
+
+    <script id="comm-console-template" type="text/template">
+        <div class="comm-console-view">&nbsp;</div>
+    </script>
+
+    <script id="nav-control-template" type="text/template">
+        <table class="nav-control-view">
+        <tr>
+            <td>
+                <div class="e-buttons"></div>
+            </td>
+            <td>
+                <div class="xy-buttons"></div>
+            </td>
+            <td>
+                <div class="z-buttons"></div>
+            </td>
+        </tr>
+        </table>
+    </script>
+
+    <script type="text/javascript" src="<%= url('/js/models/PrinterStatus.js') %>"></script>
+    <script type="text/javascript" src="<%= url('/js/models/PrinterCommand.js') %>"></script>
+    <script type="text/javascript" src="<%= url('/js/views/TemperatureGraph.js') %>"></script>
+    <script type="text/javascript" src="<%= url('/js/views/OnlineControl.js') %>"></script>
+    <script type="text/javascript" src="<%= url('/js/views/CommConsole.js') %>"></script>
+    <script type="text/javascript" src="<%= url('/js/views/NavControl.js') %>"></script>
+    <script type="text/javascript" src="<%= url('/js/initialize.js') %>"></script>
+
+</head>
+<body>
+
+<div id="container">
+    <header>
+
+    </header>
+    <div id="main" role="main">
+
+        <table>
+        <tr>
+            <td>
+                <div id="online-control"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="nav-control"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="hotend-temp" style="float:left; width: 180px"></div>
+                <div id="bed-temp" style="float:left; width: 180px"></div>
+            </td>
+        </tr>
+        </table>
+
+    </div>
+    <footer>
+
+    </footer>
+</div> <!--! end of #container -->
+
+<!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+
+</body>
+</html>

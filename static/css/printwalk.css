@@ -1,0 +1,43 @@
+
+/* Styles for OnlineControl */
+.online-control-view { border: 1px solid #C5C5C5; margin: 4px; padding: 4px; }
+.online-control-view .main-message { text-align: center; padding: 3px; font-weight: bold; }
+.online-control-view .connect > * { text-align: center; }
+.online-control-view .connect > .button { width: 64px; height: 64px; margin: 6px 10px 6px 6px;
+    background-image: url(../images/on-button.png); background-repeat: no-repeat;}
+.online-control-view .connect > .button.off      { background-position: 0px 0px; }
+.online-control-view .connect > .button.glow     { background-position: -64px 0px; }
+.online-control-view .connect > .button.press    { background-position: -128px 0px; }
+.online-control-view .connect > .button.on       { background-position: -192px 0px; }
+.online-control-view .connect > .button.on-press { background-position: -256px 0px; }
+.online-control-view .console { font-family: courier, monospace; font-size: 10pt;
+    border: 1px solid #C5C5C5; background-color: #FFF; margin: 0 8px 8px 8px; padding: 1px 4px;
+    max-height: 50px; overflow: auto; }
+.online-control-view .indicator-wrapper { width: 32px; height: 32px; float: left;}
+.online-control-view .message { float: left; line-height: 32px; }
+.online-control-view .more { float: right; margin: 8px;}
+.online-control-view .clear { clear:both; }
+.online-control-view .indicator { width: 24px; height: 24px; margin: 4px 4px;
+    background-image: url(../images/led-indicator.png); }
+.online-control-view .indicator.red { background-position: 0px 0px; }
+.online-control-view .indicator.yellow { background-position: -24px 0px; }
+.online-control-view .indicator.green { background-position: -48px 0px; }
+.online-control-view .plugged, .online-control-view .online {
+    border: 1px solid #C5C5C5; background-color: #E6E6E6; margin: 2px 0; }
+.online-control-view .drawer { display: none; }
+.online-control-view .plugged .drawer { padding: 4px; text-align: center; }
+.online-control-view .rounded, .online-control-view.rounded {
+    -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+
+.temperature-graph-view { margin: 4px 8px; }
+
+.comm-console-view { margin: 4px auto; padding: 4px; border: 1px solid #C5C5C5;
+	overflow: auto; width: 220px; height: 200px; background-color: white;
+    -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+
+.nav-control-view .xy-buttons { width: 247px; height: 248px;
+	background-image: url(../images/control_xy.png); background-repeat: no-repeat; }
+.nav-control-view .z-buttons { width: 59px; height: 244px;
+	background-image: url(../images/control_z.png); background-repeat: no-repeat; }
+.nav-control-view .e-buttons { width: 59px; height: 244px;
+	background-image: url(../images/control_e.png); background-repeat: no-repeat; }

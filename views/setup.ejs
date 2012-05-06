@@ -1,0 +1,31 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+    <title>Printwalk: 3D Print Control on the Web</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="{{url('/static/css/jquery.mobile-1.0.min.css')}}" />
+    <script type="text/javascript" src="{{url('/static/js/lib/jquery-1.6.4.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('/static/js/lib/jquery.mobile-1.0.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('/static/js/lib/console.log.js')}}"></script>
+    <script>window.url = function(href) {return "{{url()}}" + href;};</script>
+</head> 
+<body> 
+
+<div data-role="page">
+
+    <div data-role="header">
+        <h1>Setup</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        <ul data-role="listview" data-inset="true" data-filter="true">
+            <li><a href="#">Thing-O-Matic</a></li>
+            <li><a href="#">Ultimaker</a></li>
+            <li><a href="#">Cupcake</a></li>
+        </ul>
+    </div><!-- /content -->
+
+</div><!-- /page -->
+
+</body>
+</html>
